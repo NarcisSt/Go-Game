@@ -1,4 +1,4 @@
-# Go Game
+# Go Game (18)
 
 Author: Barat Narcis-Stefan
 
