@@ -1,5 +1,6 @@
 from graphics import *
 from UtilFunctions import functions as util
+from Game import gameLogic as gameLogic
 
 
 def draw_game(window):
@@ -33,3 +34,9 @@ def handle_mouse_click_game(window, turn):
                     return True, "PutPiece"
 
     return True, "Game"
+
+
+def perform_game_logic(window, i, j, turn):
+    gameLogic.add_piece(i, j, turn)
+    gameLogic.eliminate_surrounded_pieces()
+    gameLogic.mark_eliminated_pieces(window)
