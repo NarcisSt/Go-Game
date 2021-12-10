@@ -9,9 +9,15 @@ def check_inside(x_click, y_click, x_box, y_box, x_box2, y_box2):
 
 
 def reset_screen(window):
-    reset_blue = Rectangle(Point(0, 0), Point(1000, 700))
-    reset_blue.setFill(color_rgb(0, 100, 0))
-    reset_blue.draw(window)
+    reset_g = Rectangle(Point(0, 0), Point(1000, 700))
+    reset_g.setFill(color_rgb(0, 100, 0))
+    reset_g.draw(window)
+
+
+def reset_part_screen(window, x1, y1, x2, y2):
+    reset_g = Rectangle(Point(x1, y1), Point(x2, y2))
+    reset_g.setFill(color_rgb(0, 100, 0))
+    reset_g.draw(window)
 
 
 def draw_un_bordered_text(window, text, x, y):
@@ -24,6 +30,18 @@ def draw_un_bordered_text(window, text, x, y):
 
 def draw_bordered_text(window, text, x, y):
     text_border = Rectangle(Point(x - 100, y - 20), Point(x + 100, y + 20))
+    text_border.setOutline(color_rgb(87, 239, 23))
+    text_border.draw(window)
+
+    text_box = Text(Point(x, y), text)
+    text_box.setTextColor("white")
+    text_box.setSize(20)
+    text_box.setFace('helvetica')
+    text_box.draw(window)
+
+
+def draw_small_bordered_text(window, text, x, y):
+    text_border = Rectangle(Point(x - 30, y - 20), Point(x + 30, y + 20))
     text_border.setOutline(color_rgb(87, 239, 23))
     text_border.draw(window)
 

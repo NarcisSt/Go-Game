@@ -6,7 +6,7 @@ DC = [0, 1, 0, -1]
 
 def reset_board():
     global board
-    board = [0]
+    board = []
     for i in range(0, 19):
         row = []
         for j in range(0, 19):
@@ -14,12 +14,15 @@ def reset_board():
         board.append(row)
 
 
-def add_piece(i, j, turn):
+def add_piece(i, j, turn, score_white, score_black):
     global board
     if turn == 'white':
         board[i][j] = 1
+        score_white += 1
     else:
         board[i][j] = 2
+        score_black += 1
+    return (score_white, score_black)
 
 
 def has_liberty(i, j):
@@ -27,7 +30,7 @@ def has_liberty(i, j):
     queue = []
     hasLiberty = False
     color = board_aux[i][j]
-    queue.append([i, j])
+    queue.append([i,j])
     while len(queue) > 0:
         curr_pos = queue.pop(0)
         new_pos = curr_pos
@@ -72,11 +75,13 @@ def mark_eliminated_pieces(window):
                 line1.draw(window)
 
 
-def eliminate_surrounded_pieces():
+def eliminate_surrounded_pieces(score_white, score_black):
     global board
     global board_aux
     board_aux = []
     board_aux = board
+    score_white = 0
+    score_black = 0
     for i in range(0, 19):
         for j in range(0, 19):
             if board_aux[i][j] == 1 or board_aux[i][j] == 2:
@@ -86,6 +91,8 @@ def eliminate_surrounded_pieces():
             for j in range(0, 19):
                 if board_aux[i][j] == -1:
                     board[i][j] = 1
+                    score_white += 1
                 elif board_aux[i][j] == -2:
                     board[i][j] = 2
-        print(board)
+                    score_black += 1
+        return score_white, score_black
