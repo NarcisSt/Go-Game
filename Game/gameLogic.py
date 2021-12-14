@@ -30,7 +30,7 @@ def has_liberty(i, j):
     queue = []
     hasLiberty = False
     color = board_aux[i][j]
-    queue.append([i,j])
+    queue.append([i, j])
     while len(queue) > 0:
         curr_pos = queue.pop(0)
         new_pos = curr_pos
@@ -95,4 +95,4 @@ def eliminate_surrounded_pieces(score_white, score_black):
                 elif board_aux[i][j] == -2:
                     board[i][j] = 2
                     score_black += 1
-        return score_white, score_black
+        return (score_white, score_black)
