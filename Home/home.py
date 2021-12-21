@@ -49,13 +49,13 @@ class HomeManager:
                              self.computerButtonY - self.offsetY, self.computerButtonX + self.offsetX,
                              self.computerButtonY + self.offsetY):
             self.choose_oponent_flag = False
-            return (True, "Game")
+            return (True, "Pressed computer")
 
         if util.check_inside(mouse_data.x, mouse_data.y, self.player2ButtonX - self.offsetX,
                              self.player2ButtonY - self.offsetY, self.player2ButtonX + self.offsetX,
                              self.player2ButtonY + self.offsetY):
             self.choose_oponent_flag = False
-            return (True, "Game")
+            return (True, "Pressed player")
 
         if not self.choose_oponent_flag:
             return (True, "Home")
